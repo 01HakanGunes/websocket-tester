@@ -4,12 +4,12 @@ const stompClient = new StompJs.Client({
 });
 
 // DOM elements
-const connectButton = document.getElementById('connect');
-const disconnectButton = document.getElementById('disconnect');
-const sendButton = document.getElementById('send');
-const nameInput = document.getElementById('name');
-const conversationElement = document.getElementById('conversation');
-const greetingsElement = document.getElementById('greetings');
+const connectButton = document.getElementById("connect");
+const disconnectButton = document.getElementById("disconnect");
+const sendButton = document.getElementById("send");
+const nameInput = document.getElementById("name");
+const conversationElement = document.getElementById("conversation");
+const greetingsElement = document.getElementById("greetings");
 
 // Connect to websocket
 stompClient.onConnect = (frame) => {
@@ -33,11 +33,11 @@ function setConnected(connected) {
   connectButton.disabled = connected;
   disconnectButton.disabled = !connected;
   if (connected) {
-    conversationElement.style.display = 'table';
+    conversationElement.style.display = "table";
   } else {
-    conversationElement.style.display = 'none';
+    conversationElement.style.display = "none";
   }
-  greetingsElement.innerHTML = '';
+  greetingsElement.innerHTML = "";
 }
 
 function connect() {
@@ -59,25 +59,25 @@ function sendName() {
 }
 
 function showGreeting(message) {
-  const row = document.createElement('tr');
-  const cell = document.createElement('td');
+  const row = document.createElement("tr");
+  const cell = document.createElement("td");
   cell.textContent = message;
   row.appendChild(cell);
   greetingsElement.appendChild(row);
 }
 
 // Initialize the app
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   // Hide conversation on startup
-  conversationElement.style.display = 'none';
-  
+  conversationElement.style.display = "none";
+
   // Prevent form submissions
-  document.querySelectorAll('form').forEach(form => {
-    form.addEventListener('submit', (e) => e.preventDefault());
+  document.querySelectorAll("form").forEach((form) => {
+    form.addEventListener("submit", (e) => e.preventDefault());
   });
-  
+
   // Add event listeners
-  connectButton.addEventListener('click', connect);
-  disconnectButton.addEventListener('click', disconnect);
-  sendButton.addEventListener('click', sendName);
+  connectButton.addEventListener("click", connect);
+  disconnectButton.addEventListener("click", disconnect);
+  sendButton.addEventListener("click", sendName);
 });
