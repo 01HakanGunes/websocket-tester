@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Tester</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>WebSocket Connection Tester</h1>
+        
+        <div class="connection-form">
+            <div class="form-group">
+                <label for="wsUrl">WebSocket URL:</label>
+                <input type="text" id="wsUrl" value="ws://localhost:8080" placeholder="ws://localhost:8080">
+            </div>
+            
+            <div class="form-group">
+                <button id="connectBtn">Connect</button>
+                <button id="disconnectBtn" disabled>Disconnect</button>
+            </div>
+        </div>
+        
+        <div class="status-panel">
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot disconnected"></span>
+                <span class="status-text">Disconnected</span>
+            </div>
+            
+            <div class="connection-info" id="connectionInfo">
+                <p>Status: <span id="connectionStatus">Disconnected</span></p>
+                <p>Last ping: <span id="lastPing">-</span></p>
+                <p>Connection latency: <span id="connectionLatency">-</span></p>
+            </div>
+        </div>
+        
+        <div class="message-panel">
+            <div class="form-group">
+                <label for="messageInput">Send Message:</label>
+                <input type="text" id="messageInput" placeholder="Type a message..." disabled>
+                <button id="sendBtn" disabled>Send</button>
+            </div>
+            
+            <div class="log-container">
+                <h3>Message Log</h3>
+                <div id="messageLog" class="message-log"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
