@@ -15,18 +15,21 @@
   <body>
     <noscript
       ><h2 style="color: #ff0000">
-        Seems your browser doesn't support Javascript! Websocket relies on
-        Javascript being enabled. Please enable Javascript and reload this page!
+        Seems your browser doesn't support Javascript!
       </h2></noscript
     >
     <div id="main-content" class="container">
       <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <form class="row g-3 align-items-center">
-            <div class="col-auto">
-              <label for="connect" class="col-form-label"
-                >WebSocket connection:</label
-              >
+            <div class="col-md-6">
+              <label for="wsurl" class="col-form-label">WebSocket URL:</label>
+              <input
+                type="text"
+                id="wsurl"
+                class="form-control"
+                value="ws://localhost:8080/gs-guide-websocket"
+              />
             </div>
             <div class="col-auto">
               <button id="connect" class="btn btn-primary" type="button">
@@ -43,35 +46,113 @@
             </div>
           </form>
         </div>
-        <div class="col-md-6">
-          <form class="row g-3 align-items-center">
-            <div class="col-auto">
-              <label for="name" class="col-form-label"
-                >What is your name?</label
-              >
+      </div>
+
+      <!-- Simple greeting form -->
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">Simple Greeting</div>
+            <div class="card-body">
+              <form class="row g-3 align-items-center">
+                <div class="col-auto">
+                  <label for="name" class="col-form-label"
+                    >What is your name?</label
+                  >
+                </div>
+                <div class="col-auto">
+                  <input
+                    type="text"
+                    id="name"
+                    class="form-control"
+                    placeholder="Your name here..."
+                  />
+                </div>
+                <div class="col-auto">
+                  <button id="send" class="btn btn-primary" type="button">
+                    Send
+                  </button>
+                </div>
+              </form>
             </div>
-            <div class="col-auto">
-              <input
-                type="text"
-                id="name"
-                class="form-control"
-                placeholder="Your name here..."
-              />
-            </div>
-            <div class="col-auto">
-              <button id="send" class="btn btn-primary" type="button">
-                Send
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
+
+      <!-- Custom message form -->
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">Custom Message</div>
+            <div class="card-body">
+              <form class="row g-3">
+                <div class="col-md-6">
+                  <label for="destination" class="form-label"
+                    >Destination</label
+                  >
+                  <input
+                    type="text"
+                    id="destination"
+                    class="form-control"
+                    value="/app/hello"
+                    placeholder="e.g., /app/custom"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label for="subscription" class="form-label"
+                    >Subscribe to</label
+                  >
+                  <input
+                    type="text"
+                    id="subscription"
+                    class="form-control"
+                    value="/topic/greetings"
+                    placeholder="e.g., /topic/custom"
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label for="message-body" class="form-label"
+                    >Message Body (JSON)</label
+                  >
+                  <textarea
+                    id="message-body"
+                    class="form-control"
+                    rows="4"
+                    placeholder='{"key": "value"}'
+                  >
+{"name": "Custom Message"}</textarea
+                  >
+                </div>
+                <div class="col-12">
+                  <button
+                    id="send-custom"
+                    class="btn btn-primary"
+                    type="button"
+                  >
+                    Send Custom Message
+                  </button>
+                  <button
+                    id="subscribe-custom"
+                    class="btn btn-info"
+                    type="button"
+                  >
+                    Subscribe
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-12">
           <table id="conversation" class="table table-striped">
             <thead>
               <tr>
-                <th>Greetings</th>
+                <th>Timestamp</th>
+                <th>Destination</th>
+                <th>Message</th>
               </tr>
             </thead>
             <tbody id="greetings"></tbody>

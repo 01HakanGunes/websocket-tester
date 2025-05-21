@@ -19,6 +19,24 @@ body {
   width: 100%;
 }
 
+pre {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+#message-body {
+  font-family: monospace;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.card-header {
+  font-weight: bold;
+  background-color: #f8f9fa;
+}
+
 @media (max-width: 768px) {
   #main-content {
     padding: 1em;
